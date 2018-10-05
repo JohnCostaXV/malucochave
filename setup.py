@@ -43,7 +43,7 @@ async def on_message(message):
                     await client.delete_message(message)
                     await asyncio.sleep(1)
                     entrada = client.get_channel("497231408792862770")
-                    msg = "Olá, seja bem vindo ao Perfect Network!\nAntes que prossiga para nosso servidor do Discord, primeiro temos uma etapa de ´Verificação´ para uma melhor experiência dentro de nossa rede.\n\n**Como posso me verificar?**\nÉ muito simples! Você deve clicar na reação abaixo."
+                    msg = "**Olá, seja bem vindo ao Perfect Network!**\n\nAntes que prossiga para nosso servidor do Discord, primeiro temos uma etapa de **Verificação** para uma melhor experiência dentro de nossa rede.\n\n**Como posso me verificar?**\nÉ muito simples! Você deve clicar na reação abaixo."
 
                     react = await client.send_message(entrada, msg)
                     await client.add_reaction(react, "✅")
