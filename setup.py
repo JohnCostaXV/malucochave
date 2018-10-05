@@ -35,8 +35,7 @@ async def on_message(message):
     if message.content.lower().startswith("!registrar"):
             cargos = [
                 # IDs dos cargos:
-                "407677666750365706", #Diretor
-                "417426253658849281", #Gerente
+                "412708220021506058", #Master
             ]
             for r in message.author.roles:
                 if r.id in cargos:
