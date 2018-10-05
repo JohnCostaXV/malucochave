@@ -1,6 +1,14 @@
 import discord
+import random
 import asyncio
+import time
+import datetime
+import sys
+import io
 import os
+import re
+import json
+import base64
 
 client = discord.Client()
 
