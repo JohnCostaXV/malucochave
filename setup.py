@@ -43,9 +43,11 @@ async def on_message(message):
                     await client.delete_message(message)
                     await asyncio.sleep(1)
                     entrada = client.get_channel("497231408792862770")
-                    msg = "**Olá, seja bem vindo ao Perfect Network!**\n\n__Antes que prossiga para nosso servidor do Discord, primeiro temos uma etapa de **verificação** para uma melhor experiência dentro de nossa rede__.\n\n**Como posso me verificar?**\nÉ muito simples! Você deve clicar na reação abaixo."
-
-                    react = await client.send_message(entrada, msg)
+                    embed = discord.Embed(title="Procedimento:", color=COR, description="Antes que prossiga para nosso servidor do Discord, primeiro temos uma etapa de **verificação** para uma melhor experiência dentro de nossa rede.\n\n**Como posso me verificar?**\nÉ muito simples! Você deve clicar na reação abaixo.")
+                    embed.set_author(name="Sistema de verificação", icon_url="https://i.imgur.com/DCbWIa6.jpg")
+                    embed.set_footer(text="Equipe de desenvolvimento do discord", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                    embed.timestamp = datetime.datetime.utcnow()
+                    react = await client.send_message(entrada, embed=embed)
                     await client.add_reaction(react, "✅")
 
 
