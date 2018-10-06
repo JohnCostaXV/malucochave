@@ -32,6 +32,43 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
+    if message.content.lower().startswith('!say'):
+            try:
+                cargos = [
+                    # IDs dos cargos:
+                    "412708220021506058", #Master
+                    "412709280383500298", #Coordenador
+                    "412710082321580043", #Gerente
+                    "412710669746569216" #Administrador
+                ]
+                for r in message.author.roles:
+                    if r.id in cargos:
+                        args = message.content.split(" ")
+                        await client.send_message(message.channel, (" ".join(args[1:])))
+                        await client.delete_message(message)
+            except IndexError:
+                await client.delete_message(message)
+                embedd = discord.Embed(
+                    title='Comando incorreto!',
+                    color=COR,
+                    description='Use `!say [mensagem]`'
+                )
+                embedd.timestamp = datetime.datetime.utcnow()
+                embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+                await client.send_message(message.channel, embed=embedd)
+            except:
+                await client.delete_message(message)
+                embed2 = discord.Embed(
+                    title='Permissão negada!',
+                    color=COR,
+                    description='Você não tem permissão para executar esse comando.'
+                )
+                embed2.timestamp = datetime.datetime.utcnow()
+                embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+                await client.send_message(message.channel, embed=embed2)
+            finally:
+                pass
+
     if message.content.lower().startswith('!ping'):
         channel = message.channel
         t1 = time.perf_counter()
