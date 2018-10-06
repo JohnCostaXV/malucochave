@@ -32,6 +32,39 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
+    if message.content.lower().startswith("!limpar"):
+            cargos = [
+                # IDs dos cargos:
+                "412708220021506058", #Master
+                "412709280383500298", #Coordenador
+                "412710082321580043", #Gerente
+                "412710669746569216" #Administrador
+            ]    
+            for r in message.author.roles:
+                if r.id in cargos:
+                    args = message.content.split(" ")
+                    try:
+                        ammount = int(args[1]) + 1 if len(args) > 0 else 2
+                    except:
+                        await client.send_message(message.channel, embed=discord.Embed(color=discord.Color.red(), description="Por gentileza, digite um valor para limpar!"))
+                        return
+
+                    cleared = 0
+                    failed = 0
+
+                    async for m in client.logs_from(message.channel, limit=ammount):
+                        try:
+                            await client.delete_message(m)
+                            cleared += 1
+                        except:
+                            failed += 1
+                            pass
+
+                    failed_str = "\n\nFalha para limpar %s message(s)." % failed if failed > 0 else ""
+                    returnmsg = await client.send_message(message.channel, embed=discord.Embed(color=discord.Color.blue(), description="%s limpou %s message(s).%s" % (message.author.mention, cleared, failed_str)))
+                    await asyncio.sleep(5)
+                    await client.delete_message(returnmsg)
+
     if message.content.lower().startswith("!registrar"):
             cargos = [
                 # IDs dos cargos:
