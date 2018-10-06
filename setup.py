@@ -32,6 +32,38 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
+    if message.content.lower().startswith('!avatar'):
+            try:
+                user = message.mentions[0]
+                embed = discord.Embed(
+                    title="",
+                    color=COR,
+                    description='Clique [aqui](' + user.avatar_url + ') para acessar o avatar do {}.'.format(user.name)
+                )
+                embed.set_author(
+                    name=message.server.name,
+                    icon_url="https://i.imgur.com/DCbWIa6.jpg"
+                )
+                embed.set_image(
+                    url=user.avatar_url
+                )
+                await client.send_message(message.channel, embed=embed)
+            except IndexError:
+                err = discord.Embed(
+                    color=COR,
+                    description='Clique [aqui](' + message.author.avatar_url + ') para acessar o avatar do {}.'.format(message.author.name)
+                )
+                err.set_author(
+                    name=message.server.name,
+                    icon_url="https://i.imgur.com/DCbWIa6.jpg"
+                )
+                err.set_image(
+                    url=message.author.avatar_url
+                )
+                await client.send_message(message.channel, embed=err)
+            finally:
+                pass
+
     if message.content.lower().startswith("!limpar"):
             cargos = [
                 # IDs dos cargos:
