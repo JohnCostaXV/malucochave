@@ -37,7 +37,7 @@ async def on_message(message):
         t1 = time.perf_counter()
         await client.send_typing(channel)
         t2 = time.perf_counter()
-        ping_embed = discord.Embed(title="🏓 Pong!", color=COR, description='Meu tempo de resposta é `{}ms`!'.format(round((t2 - t1) * 1000)))
+        ping_embed = discord.Embed(title="🏓 Pong!", color=COR, description='Meu tempo de resposta é {}ms!'.format(round((t2 - t1) * 1000)))
         ping_embed.timestamp = datetime.datetime.utcnow()
         await client.send_message(message.channel, f"{message.author.mention}", embed=ping_embed)
 
