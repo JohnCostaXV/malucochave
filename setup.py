@@ -184,5 +184,15 @@ async def on_reaction_add(reaction, user):
      role2 = discord.utils.get(user.server.roles, name="👨🏻‍🚀 Jogador")
      await client.add_roles(user, role2)
 
+     canal = client.get_channel("496852751008137226")
+
+     embed = discord.Embed(
+         color=COR,
+         description="Seja bem-vindo(a) ao discord da rede de servidores PerfectNetwork!"
+     )
+     embed.set_author(name=user.name, icon_url=user.avatar_url)
+     embed.set_thumbnail(url=user.avatar_url)
+     await client.send_message(canal, embed=embed)
+
 
 client.run(os.environ.get("BOT_TOKEN"))
