@@ -27,7 +27,7 @@ async def on_ready():
 
 @client.event
 async def on_member_join(member):
-    role = discord.utils.get(member.server.roles, name="Sem registro")
+    role = discord.utils.get(member.server.roles, name="Unregister")
     await client.add_roles(member, role)
 
 @client.event
@@ -174,10 +174,10 @@ async def on_reaction_add(reaction, user):
 
     if reaction.emoji == "✅" and msg.id == msg_id: #and user == msg_user:
      for role in user.roles:
-         if role.name == "Sem registro":
+         if role.name == "Unregister":
              await client.remove_reaction(msg, "✅", user)
 
-     role1 = discord.utils.get(user.server.roles, name="Sem registro")
+     role1 = discord.utils.get(user.server.roles, name="Unregister")
      await client.remove_roles(user, role1)
      
      await asyncio.sleep(1)
