@@ -181,8 +181,8 @@ async def on_reaction_add(reaction, user):
      await client.remove_roles(user, role1)
      
      await asyncio.sleep(1)
-     role = discord.utils.get(user.server.roles, name="👨🏻‍🚀 Jogador")
-     await client.add_roles(user, role)
+     role2 = discord.utils.get(user.server.roles, name="👨🏻‍🚀 Jogador")
+     await client.add_roles(user, role2)
 
 
 client.run(os.environ.get("BOT_TOKEN"))
