@@ -159,10 +159,22 @@ async def on_message(message):
                 def check(reaction, user):
                     msg = reaction.message
 
-                    if reaction.emoji == "💎" and msg.id == msg_id: #and user == msg_user:
+                    if reaction.emoji == "🎩":
                      for role in user.roles:
-                        if role.name == "👨🏻‍🚀 Jogador":
-                            await client.remove_reaction(msg, "💎", user)
+                         if role.name == "👨🏻‍🚀 Jogador":
+                             await client.remove_reaction(msg, "🎩", user)
+                     await client.send_message(message.channel, "teste")
+
+                    if reaction.emoji == "👑":
+                     for role in user.roles:
+                         if role.name == "👨🏻‍🚀 Jogador":
+                             await client.remove_reaction(msg, "👑", user)
+                     await client.send_message(message.channel, "teste")
+
+                    if reaction.emoji == "💎":
+                     for role in user.roles:
+                         if role.name == "👨🏻‍🚀 Jogador":
+                             await client.remove_reaction(msg, "💎", user)
                             
                      await client.send_message(message.channel, "teste")
 
