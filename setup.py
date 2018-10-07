@@ -143,43 +143,6 @@ async def on_message(message):
                     await asyncio.sleep(5)
                     await client.delete_message(returnmsg)
 
-    if message.content.lower().startswith("!ticket"):
-        cargos = [
-                # IDs dos cargos:
-                "412708220021506058", #Master
-        ]
-        for r in message.author.roles:
-            if r.id in cargos:
-                await client.delete_message(message)
-                msg = await client.send_message(message.channel, "TICKET CRIADO!")
-                await client.add_reaction(msg, "💎")
-                await client.add_reaction(msg, "👑")
-                await client.add_reaction(msg, "🎩")
-                
-                def check(reaction, user):
-                    msg = reaction.message
-
-                    if reaction.emoji == "🎩":
-                     for role in user.roles:
-                         if role.name == "👨🏻‍🚀 Jogador":
-                             await client.remove_reaction(msg, "🎩", user)
-                     await client.send_message(message.channel, "teste")
-
-                    if reaction.emoji == "👑":
-                     for role in user.roles:
-                         if role.name == "👨🏻‍🚀 Jogador":
-                             await client.remove_reaction(msg, "👑", user)
-                     await client.send_message(message.channel, "teste")
-
-                    if reaction.emoji == "💎":
-                     for role in user.roles:
-                         if role.name == "👨🏻‍🚀 Jogador":
-                             await client.remove_reaction(msg, "💎", user)
-                            
-                     await client.send_message(message.channel, "teste")
-
-
-
     if message.content.lower().startswith("!registrar"):
             cargos = [
                 # IDs dos cargos:
